@@ -4,6 +4,6 @@ const bookingController=require('../controllers/BookingControl')
 
 router.get('/get-users',bookingController.getBookings);
 router.post('/add-user',bookingController.postBookings);
-//router.delete('/delete-bookings');
+router.delete('/delete-user/:id',bookingController.deleteBookings);
 
 module.exports=router;

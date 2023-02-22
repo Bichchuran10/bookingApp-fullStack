@@ -10,8 +10,7 @@ const save=async(event)=>{
             email,
             phonenumber
         }
-    
-    //console.log(`Naam is ${user.name}, mail is ${user.email} and phone is ${user.phone}`)
+
     let response=await axios.post('http://localhost:3000/user/add-user',user)
     showNewBookingsOnScreen(response.data.newUserDetail)
     }
@@ -52,7 +51,9 @@ const showNewBookingsOnScreen=(user)=>{
 
 const deleteUser=async(id)=>{
     try{
-        axios.delete(`http://localhost:3000/deleteUser/${id}`)
+        //console.log(`hahaahhahha ${id}`)
+        await axios.delete(`http://localhost:3000/user/delete-user/${id}`)
+        console.log(`${id} will be deleted`)
         removeUserFromScreen(id)
     }
     catch(e)

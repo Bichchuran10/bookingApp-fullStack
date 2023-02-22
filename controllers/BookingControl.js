@@ -31,3 +31,26 @@ exports.postBookings=async(req,res,next)=>{
             eror:e})
     }
     }
+exports.deleteBookings=async(req,res,next)=>{
+
+    const userId=req.params.id;
+    console.log(`controller id isssss ${userId}`)
+    
+    try{
+       
+        if(req.params.id =='undefined')
+        {
+            console.log('ID is not found')
+            return res.status(400).json({err: 'No ID match is found'})
+        }
+        await User.destroy({where: {id: userId}});
+        res.sendStatus(200)
+        console.log("Delete operation successfull !!!")
+        
+    }
+    catch(e){
+        console.log(e);
+        res.status(500).json(e)
+    }
+
+}
